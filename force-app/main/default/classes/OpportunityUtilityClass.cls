@@ -13,14 +13,16 @@ public with sharing class OpportunityUtilityClass {
     public static void updateRelatedAccountRecentOppAmount( List<Opportunity> oppList ){
 
         List<Account> accList = new List<Account>();
+        Map<Id, Account> accMap = new Map<Id, Account>();
 
         for( Opportunity opp : oppList ){
 
             if( opp.AccountId != null ){
-                Account acc = [ SELECT Id, Recent_Opportunity_Amount__c	FROM Account WHERE Id =:opp.AccountId ];
+                Account acc = new Account();
+                acc.Id = opp.AccountId;
                 acc.Recent_Opportunity_Amount__c = opp.Amount;
 
-                accList.add( acc );
+                accMap.put( opp.AccountId, acc );
             }
 
         }
@@ -120,4 +122,17 @@ public with sharing class OpportunityUtilityClass {
         }
     }
     
+    public static void updateCloseDateOnBasisOfStageName(List<Opportunity> oppList, Map<Id,Opportunity> oppOldMap){
+
+        for( Opportunity opp : oppList ){
+            Opportunity temp = oppOldMap.get( opp.Id );
+
+            if( temp.StageName != opp.StageName && ( opp.StageName == 'Closed Won' || opp.StageName == 'Closed Lost' ) ){
+                opp.CloseDate = Date.today();
+            }
+        }
+
+    }
+
+
 }

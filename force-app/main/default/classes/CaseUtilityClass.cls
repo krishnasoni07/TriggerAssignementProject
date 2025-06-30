@@ -21,7 +21,7 @@ public with sharing class CaseUtilityClass {
     public static void updateCaseRecordTypeCountOnAccount( List<Case> caseList ){
 
         Id partnerRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Partner Case R').getRecordTypeId();
-        Id customerRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Customer_Case_R').getRecordTypeId();
+        Id customerRecordTypeId = Schema.SObjectType.Case.getRecordTypeInfosByName().get('Customer Case R').getRecordTypeId();
 
         Set<Id> accountIdSet = new Set<Id>();
         for( Case cs : caseList ){
