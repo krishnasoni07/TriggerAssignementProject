@@ -237,8 +237,10 @@ public with sharing class AccountUtilityClass {
         Id userProfileId = UserInfo.getProfileId();
         Profile profileName = [ SELECT Name FROM Profile WHERE Id =: userProfileId ];
 
-        if( profileName.Name != 'System Administrator' ){
-            accList.get(0).addError('Only System Admin Could Delete the Account');
+        for( Account acc : accList ){
+            if( profileName.Name != 'System Administrator' ){
+                acc.addError('Only System Admin Could Delete the Account');
+            }
         }
     }
 
@@ -339,5 +341,34 @@ public with sharing class AccountUtilityClass {
         if( conList != null )
             update conList;
     }
+
+
+    public static Boolean methodExecuted = false;
+
+    public static void updateDescriptionWithAvoidRecursion( List<Account> accList ){
+        if( methodExecuted ) return;
+        methodExecuted = true;
+
+        for( Account acc : accList ){
+            if( acc.Description == null ){
+                acc.Description = 'Desc Field updated only once';
+            }
+        }
+    }
+
+    
+    public static Boolean contactUpdated = false;
+
+    public static void updateContactFieldMethod( List<Account> accList ){
+        if( contactUpdated ) return;
+        contactUpdated = true;
+
+        List<Contact> conList = [ SELECT Id, HomePhone FROM Contact WHERE AccountId = :accList.get(0).Id ];
+
+        conList.get(0).HomePhone += '1';
+
+        update conList;
+    }
+    
 
 }

@@ -5,6 +5,10 @@ trigger OpportunityTrigger on Opportunity (before insert, after insert, before u
         //OpportunityUtilityClass.updateOppDescriptionOnStage(Trigger.new); // Q.13
 
         // OpportunityUtilityClass.checkIfAmountIsNull(Trigger.new); // Q.22
+
+        // OpportunityUtilityClass.calculateDiscuntSafely( Trigger.new ); // Recursion 3
+
+
     }
     
     if( Trigger.isBefore && Trigger.isUpdate ){
@@ -12,7 +16,7 @@ trigger OpportunityTrigger on Opportunity (before insert, after insert, before u
 
         // OpportunityUtilityClass.checkIfClosedLostReasonIsNull(Trigger.new); // Q.23
 
-        OpportunityUtilityClass.updateCloseDateOnBasisOfStageName( Trigger.new, Trigger.oldMap );// Q.47
+        // OpportunityUtilityClass.updateCloseDateOnBasisOfStageName( Trigger.new, Trigger.oldMap );// Q.47
     }
 
     if( Trigger.isAfter && Trigger.isUpdate ){

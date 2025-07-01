@@ -134,5 +134,21 @@ public with sharing class OpportunityUtilityClass {
 
     }
 
+    public static void calculateDiscountSafely(List<Opportunity> oppList) {
+        for (Opportunity opp : oppList) {
+            try {
+                if (opp.Amount != null && opp.ExpectedRevenue != null) {
+                    if (opp.Amount != 0) {
+                        opp.Discount__c = (opp.Amount - opp.ExpectedRevenue) / opp.Amount;
+                    } else {
+                        System.debug('Amount is zero. Cannot calculate discount to avoid division by zero.');
+                    }
+                }
+            } catch (Exception ex) {
+                System.debug('Exception while calculating Discount__c: ' + ex.getMessage());
+            }
+        }
+    }
+    
 
 }

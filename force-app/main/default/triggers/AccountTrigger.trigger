@@ -21,6 +21,8 @@ trigger AccountTrigger on Account( before insert, after insert, before update, a
         // AccountUtilityClass.changeRatingAsPerIndustry(Trigger.new); // Q.12
 
         // AccountUtilityClass.preventRecordEditing(Trigger.new);// Q.21
+
+        // AccountUtilityClass.updateDescriptionWithAvoidRecursion(Trigger.new); // Recursion 1
     }
 
     if( Trigger.isAfter && Trigger.isUpdate ){
@@ -34,6 +36,7 @@ trigger AccountTrigger on Account( before insert, after insert, before update, a
         // AccountUtilityClass.changeRelatedContactOwnerId( Trigger.new, Trigger.old );// Q.38
         // AccountUtilityClass.changeRelatedContactOwnerIdWithMap( Trigger.new, Trigger.oldMap );// Q.39
 
+        // AccountUtilityClass.updateContactFieldMethod(Trigger.new); // Recursion 4
     }
     
     if( Trigger.isBefore && Trigger.isDelete ){
