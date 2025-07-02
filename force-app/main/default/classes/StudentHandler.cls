@@ -1,14 +1,29 @@
 public with sharing class StudentHandler {
+    
     public static void preventInsertionIfClassIsFull( List<Student__c> stuList ){
 
+        Set<Id> classesIdSet = new Set<Id>();
         Map<Id, Boolean> isSeatAvailable = new Map<Id, Boolean>();
 
         for( Student__c stu : stuList ){
-            if( stu.Class__c.Max_Size__c == stu.Class__c.No_of_Students__c ){
-                // isSeatAvailable.put( stu.Class__c.Id )
+            classesIdSet.add( stu.Class__c );
+        }
+
+        List<Class__c> classList = [ SELECT Id, Max_Size__c, ( SELECT Id, Class__c FROM Students__r  ) FROM Class__c WHERE Id IN :classesIdSet];
+
+
+        for( Class__c cls : classList ){
+            if( cls.Max_Size__c <= cls.Students__r.size() ){
+                isSeatAvailable.put( cls.Id, false );
             }
         }
-        
+
+        for( Student__c stu : stuList ){
+            if( isSeatAvailable.containsKey(stu.Class__c) ){
+                stu.addError('Current class is already filled with Students, no more students can be added now.');
+            }
+        }
+
     }
 
 

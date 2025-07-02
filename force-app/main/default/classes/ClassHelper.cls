@@ -17,4 +17,28 @@ public with sharing class ClassHelper {
         }
 
     }
+
+
+    public static void deleteStudentIfStatusEqualsReset( List<Class__c> clsList, Map<Id, Class__c> clsOldMap ){
+
+        Set<Id> classRecordsId = new Set<Id>();
+
+        for( Class__c cls : clsList ){
+            Class__c temp = clsOldMap.get(cls.Id);
+
+            if( temp.Custom_Status__c != cls.Custom_Status__c && cls.Custom_Status__c == 'Reset' ){
+                classRecordsId.add( cls.Id );
+            }
+        }
+
+        List<Student__c> stuList = [ SELECT Id FROM Student__c WHERE Class__c IN :classRecordsId ];
+
+        if( stuList != null ){
+            delete stuList;
+        }
+
+    }
+
+
+
 }
