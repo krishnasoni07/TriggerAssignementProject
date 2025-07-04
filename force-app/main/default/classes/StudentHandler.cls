@@ -1,5 +1,5 @@
 public with sharing class StudentHandler {
-    
+
     public static void preventInsertionIfClassIsFull( List<Student__c> stuList ){
 
         Set<Id> classesIdSet = new Set<Id>();
@@ -29,8 +29,19 @@ public with sharing class StudentHandler {
 
     public static void updateMyCountOnClass( List<Student__c> stuList ){
         
-        
+        Set<Id> classIDs = new Set<Id>();
 
+        for( Student__c stu : stuList ){
+            classIDs.add(stu.Class__c);
+        }
+
+        List<Class__c> clsList = [ SELECT Id, Name, My_Count__c, ( SELECT Id FROM Students__r ) FROM Class__c WHERE Id IN :classIDs ];
+
+        for( Class__c cls : clsList ){
+            cls.My_Count__c = cls.Students__r.size();
+        }
+
+        update clsList;
     }
 
 }
