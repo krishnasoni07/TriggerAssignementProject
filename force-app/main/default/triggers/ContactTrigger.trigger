@@ -9,6 +9,7 @@ trigger ContactTrigger on Contact (after insert, before insert, after update) {
         if( Trigger.isUpdate ){
             // ContactHandler.updateAccountFieldMethod(Trigger.new); // Recursion 4
         }
+        
     }
 
     if( Trigger.isBefore ){
