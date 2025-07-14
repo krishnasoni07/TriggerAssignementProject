@@ -1,8 +1,8 @@
 trigger AccountTrigger on Account( before insert, after insert, before update, after update, before delete ){
     
     if( Trigger.isBefore && Trigger.isInsert){
-        //AccountUtilityClass.changeRatingAsPerIndustry(Trigger.new); // Q.1
-        // AccountUtilityClass.copyBillingAddressToShippingAddress(Trigger.new); // Q.3
+        AccountUtilityClass.changeRatingAsPerIndustry(Trigger.new); // Q.1
+        AccountUtilityClass.copyBillingAddressToShippingAddress(Trigger.new); // Q.3
 
         
     }
@@ -11,13 +11,13 @@ trigger AccountTrigger on Account( before insert, after insert, before update, a
         //AccountUtilityClass.createRelatedContact(Trigger.new);  // Q.5
         //AccountUtilityClass.createRelatedOpportunity(Trigger.new); // Q.6
 
-        //AccountUtilityClass.createOppOrConRecord(Trigger.new); // Q.9
+        AccountUtilityClass.createOppOrConRecord(Trigger.new); // Q.9
 
     }
 
     if( Trigger.isBefore && Trigger.isUpdate ){
-        //AccountUtilityClass.updateDescriptionOnPhoneUpdate( Trigger.new , Trigger.oldMap ); // Q.10
-        // AccountUtilityClass.copyBillingAddressToShippingAddress(Trigger.new); // Q.11
+        AccountUtilityClass.updateDescriptionOnPhoneUpdate( Trigger.new , Trigger.oldMap ); // Q.10
+        AccountUtilityClass.copyBillingAddressToShippingAddress(Trigger.new); // Q.11
         // AccountUtilityClass.changeRatingAsPerIndustry(Trigger.new); // Q.12
 
         // AccountUtilityClass.preventRecordEditing(Trigger.new);// Q.21
