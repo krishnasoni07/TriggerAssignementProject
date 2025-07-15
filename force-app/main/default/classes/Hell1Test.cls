@@ -171,4 +171,56 @@ private class Hell1Test {
             new List<Integer>{1, 2}, new List<Integer>{}));
     }
 
+    @isTest
+    private static void testPrintSecondLargest(){
+        obj.printSecondLargestNumber(new List<Integer>{5, 3, 9, 1, 7});
+        obj.printSecondLargestNumber(new List<Integer>{-3, -7, 0, -1});
+        obj.printSecondLargestNumber(new List<Integer>{9, 9, 9});
+    }
+    
+    @isTest
+    private static void testPatternOne(){
+		obj.patternOne(6);
+        obj.patternTwo(7);
+        obj.printAlphabetCount('Hey there, This side Krishna soni');
+    }
+    
+    @isTest
+    private static void testGetSortedMergedList() {
+        
+    
+        System.assertEquals(
+            new List<Integer>{1, 2, 3, 4, 5, 6},
+            obj.getSortedMergedList(
+                new List<Integer>{3, 1, 5},
+                new List<Integer>{4, 2, 6}
+            )
+        );
+    
+        System.assertEquals(
+            new List<Integer>{1, 2, 2, 3},
+            obj.getSortedMergedList(
+                new List<Integer>{1, 2},
+                new List<Integer>{2, 3}
+            )
+        );
+    
+        System.assertEquals(
+            new List<Integer>{},
+            obj.getSortedMergedList(
+                new List<Integer>{},
+                new List<Integer>{}
+            )
+        );
+    
+        System.assertEquals(
+            new List<Integer>{5, 7, 9},
+            obj.getSortedMergedList(
+                new List<Integer>{5},
+                new List<Integer>{9, 7}
+            )
+        );
+    }
+
+    
 }

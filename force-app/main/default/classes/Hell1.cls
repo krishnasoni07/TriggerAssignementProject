@@ -1,5 +1,5 @@
 public with sharing class Hell1 {
-    
+    /*
     public static void getContactAndLeadsByName( String name ){
         List<List<SObject>> searchResults = [FIND :('*' + name + '*') IN ALL FIELDS RETURNING Contact(Id, Name), Lead(Id, Name)];
 
@@ -8,11 +8,11 @@ public with sharing class Hell1 {
         
         
         for( Contact con : conList ){
-            System.debug( con.Id + ' => ' + con.Name );
+            //System.debug( con.Id + ' => ' + con.Name );
         }
         
         for( Lead obj : leadList ){
-            System.debug( obj.Id + ' => ' + obj.Name );
+            //System.debug( obj.Id + ' => ' + obj.Name );
         }
     }
 
@@ -25,11 +25,11 @@ public with sharing class Hell1 {
         
         
         for( Account con : conList ){
-            System.debug( con.Id + ' => ' + con.Name );
+            //System.debug( con.Id + ' => ' + con.Name );
         }
         
         for( Case obj : leadList ){
-            System.debug( obj.Id );
+            //System.debug( obj.Id );
         }
     }
 
@@ -40,7 +40,7 @@ public with sharing class Hell1 {
         List<Case> caseList = (List<Case>)searchResults.get(0);
         
         for( Case cs : caseList ){
-            System.debug( cs.Id + ' => ' + cs.Subject );
+            //System.debug( cs.Id + ' => ' + cs.Subject );
         }
     }
     
@@ -51,11 +51,11 @@ public with sharing class Hell1 {
         List<Group> groupList = (List<Group>)searchResults.get(1);
         
         for (User usr : userList) {
-            System.debug(usr.Id + ' => ' + usr.Name);
+            //System.debug(usr.Id + ' => ' + usr.Name);
         }
         
         for (Group grp : groupList) {
-            System.debug(grp.Id + ' => ' + grp.Name);
+            //System.debug(grp.Id + ' => ' + grp.Name);
         }
     }
 
@@ -65,7 +65,7 @@ public with sharing class Hell1 {
         List<Lead> leadList = (List<Lead>)searchResults.get(0);
         
         for (Lead ld : leadList) {
-            System.debug(ld.Id + ' => ' + ld.Name);
+            //System.debug(ld.Id + ' => ' + ld.Name);
         }
     }
     
@@ -76,15 +76,15 @@ public with sharing class Hell1 {
         List<Contact> conList = (List<Contact>)searchResults.get(1);
         
         for (Account acc : accList) {
-            System.debug(acc.Id + ' => ' + acc.Name);
+            //System.debug(acc.Id + ' => ' + acc.Name);
         }
         
         for (Contact con : conList) {
-            System.debug(con.Id + ' => ' + con.Name);
+            //System.debug(con.Id + ' => ' + con.Name);
         }
     }
 
-
+*/
     
 
     public String reverseString(String str) {
@@ -141,8 +141,8 @@ public with sharing class Hell1 {
 
         }
 
-        System.debug('Vowels Count : ' + vowel);
-        System.debug('Consonants Count : ' + consonant);
+        //System.debug('Vowels Count : ' + vowel);
+        //System.debug('Consonants Count : ' + consonant);
 
         return vowel;
     }
@@ -162,15 +162,15 @@ public with sharing class Hell1 {
 
         for(Integer i = 1; i <= 100; i++){
 
-            if( Math.mod( i , 3 ) == 0 )
-                System.debug('Fizz\n');
-
+            if( Math.mod( i , 3 ) == 0 ){
+                //System.debug('Fizz\n');
+            }
             else if( Math.mod(i , 5) == 0 ){
-                System.debug('Buzz\n');
+                //System.debug('Buzz\n');
             }
 
             else{
-                System.debug(i + '\n');
+                //System.debug(i + '\n');
             }
 
         }
@@ -195,13 +195,14 @@ public with sharing class Hell1 {
         Integer count = 1;
 
 
-        if( num == 1)
-            System.debug('0');
+        if( num == 1){
+            //System.debug('0');
+        }
         else {
-            System.debug('0');
+            //System.debug('0');
             while( count != num ){
     
-                System.debug('Fibonacci : ' + c );
+                //System.debug('Fibonacci : ' + c );
     
                 a = b;
                 b = c;
@@ -226,8 +227,8 @@ public with sharing class Hell1 {
             }
         }
 
-        System.debug('\n\n' + even);
-        System.debug('\n\n' + odd);
+        //System.debug('\n\n' + even);
+        //System.debug('\n\n' + odd);
     }
 
     public Integer getDigitsCount(Integer num){
@@ -320,7 +321,7 @@ public with sharing class Hell1 {
             }
         }
 
-        System.debug('\n\n' + arr + '\n\n');
+        //System.debug('\n\n' + arr + '\n\n');
 
     }
 
@@ -360,7 +361,7 @@ public with sharing class Hell1 {
                 max = arr.get(i);
         } 
 
-        System.debug( '\n\nSmallest : ' + min + '\nLargest : ' + max + '\n\n' );
+        //System.debug( '\n\nSmallest : ' + min + '\nLargest : ' + max + '\n\n' );
     }
 
     public List<Integer> getCommonElemetns( List<Integer> arr1, List<Integer> arr2 ){ 
@@ -394,7 +395,7 @@ public with sharing class Hell1 {
 
         }
 
-        System.debug('\n\n' + smax + '\n\n');
+        //System.debug('\n\n' + smax + '\n\n');
     }
 
 
@@ -405,8 +406,8 @@ public with sharing class Hell1 {
         String alphabets = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         
 
-        System.debug('\n');
-        System.debug('\n');
+        //System.debug('\n');
+        //System.debug('\n');
 
         
 
@@ -424,11 +425,11 @@ public with sharing class Hell1 {
                 }
             }
             
-            System.debug(patternLine);
+            //System.debug(patternLine);
         }
 
-        System.debug('\n');
-        System.debug('\n');
+        //System.debug('\n');
+        //System.debug('\n');
     }
 
     public void patternTwo( Integer num ){
@@ -444,7 +445,7 @@ public with sharing class Hell1 {
                     row += '_';
                 }
             }
-            System.debug( row );
+            //System.debug( row );
         }
 
     }
@@ -472,10 +473,10 @@ public with sharing class Hell1 {
 
         for(String key : allKeys){
 
-            System.debug( '               ' + key + ' : ' + countSortObj.get( key ) );
+            //System.debug( '               ' + key + ' : ' + countSortObj.get( key ) );
         }
 
-        // System.debug( '\n\n' + countSortObj + '\n\n');
+        // //System.debug( '\n\n' + countSortObj + '\n\n');
 
     }
 
