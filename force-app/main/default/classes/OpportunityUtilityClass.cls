@@ -85,8 +85,6 @@ public with sharing class OpportunityUtilityClass {
         }
     }
 
-    
-    
     public static void preventOtherUsersToDeleteClosedOpportunity( List<Opportunity> oppList ){
         Id userProfileId = UserInfo.getUserId();
         Profile profileName = [ SELECT Name FROM Profile WHERE Id =: userProfileId ];

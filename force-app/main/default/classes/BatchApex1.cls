@@ -9,6 +9,11 @@ public class BatchApex1 implements Database.Batchable<SObject>, Database.Statefu
     }
     
     public void execute( Database.BatchableContext bc, List<Opportunity> scope ){
+        
+        if( recordProcessed >= 1 ){
+            throw new DmlException();
+        }
+        
         System.debug( '\n\n\n' + bc + '\n\n\n');
         for( Opportunity opp : scope ){
             opp.CloseDate = System.today();
